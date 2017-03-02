@@ -12,7 +12,7 @@
 	<script src="lib/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<div class="container">
+	<div class="container" id="area">
 		<div class="progress">
 			<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%" id="progress-bar"></div>
 		</div>
@@ -84,6 +84,12 @@
 		<h1 class="number"></h1>
 		<h2 id="number" class="numbers"></h2>
 		<h2 id="entered-numbers" class="numbers"></h2>
+	</div>
+
+	<div class="container" id="alert-area">
+		<div class="alert alert-warning alert-dismissible fade show" role="alert" id="field-alert">
+			<strong>Oh Snap!</strong> Check to make sure you have all fields filled in
+		</div>
 	</div>
 	<script src="lib/firebase/js/firebase.js"></script>
 	<script>

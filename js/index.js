@@ -2,13 +2,15 @@
  * Created by cooperanderson on 3/1/17 AD.
  */
 
-$(".container").css({"margin-top": `${(($(window).height()) / 2) - ($(".container").height() * 3 / 4)}px`});
+$("#area").css({"margin-top": `${(($(window).height()) / 2) - ($("#area").height() * 3 / 4)}px`});
 let options = {}, database = firebase.database().ref(), interval;
 
 $(function () {
 	$('[data-toggle="tooltip"]').stop();
 	$('[data-toggle="tooltip"]').tooltip();
 });
+
+$("#field-alert").stop().fadeOut(0);
 
 $("#start").on("click", function(data) {
 	options["name"] = $("#name").val();
@@ -22,11 +24,16 @@ $("#start").on("click", function(data) {
 	options["hide-timer"] = $("#hide-timer").val();
 	options["date"] = new Date().getTime();
 	options["number"] = generateNumber(options["number-count"], options["min-number"], options["max-number"]);
-	options["entry"] = "";
-	options["version"] = "v0.1.0";
-	$("#options-area").remove();
-	$("h1.number").html(options["number"]);
-	interval = setInterval(runTest);
+	if (includes(options, "")) {
+		$("#field-alert").stop().fadeIn();
+	} else {
+		$("#field-alert").stop().fadeOut(0);
+		options["entry"] = "";
+		options["version"] = "v0.1.0";
+		$("#options-area").remove();
+		$("h1.number").html(options["number"]);
+		interval = setInterval(runTest);
+	}
 });
 
 $("#submit").on("click", function(data) {
@@ -37,6 +44,15 @@ $("#submit").on("click", function(data) {
 	$(".numbers#entered-numbers").html(formatEntry(options["number"], options["entry"]));
 	database.child(options["date"]).set(options);
 });
+
+function includes(array, value) {
+	for (let key in array) {
+		if (array[key] === value) {
+			return true;
+		}
+	}
+	return false;
+}
 
 function generateNumber(count, min=0, max=9) {
 	let number = ""
