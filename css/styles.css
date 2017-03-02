@@ -2,7 +2,7 @@ form {
     margin-bottom: 12px;
 }
 
-input#min-number, input#max-number {
+input#min-number, input#max-number, input#age {
     width: 64px;
 }
 

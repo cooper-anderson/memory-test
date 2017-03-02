@@ -5,6 +5,11 @@
 $(".container").css({"margin-top": `${(($(window).height()) / 2) - ($(".container").height() * 3 / 4)}px`});
 let options = {}, interval;
 
+$(function () {
+	$('[data-toggle="tooltip"]').stop();
+	$('[data-toggle="tooltip"]').tooltip();
+});
+
 $("#start").on("click", function(data) {
 	options["name"] = $("#name").val();
 	options["min-number"] = $("#min-number").val();
