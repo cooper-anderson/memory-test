@@ -3,7 +3,7 @@
  */
 
 $(".container").css({"margin-top": `${(($(window).height()) / 2) - ($(".container").height() * 3 / 4)}px`});
-let options = {}, interval;
+let options = {}, database = firebase.database().ref(), interval;
 
 $(function () {
 	$('[data-toggle="tooltip"]').stop();
@@ -12,16 +12,18 @@ $(function () {
 
 $("#start").on("click", function(data) {
 	options["name"] = $("#name").val();
+	options["age"] = $("#age").val();
 	options["min-number"] = $("#min-number").val();
 	options["max-number"] = $("#max-number").val();
-	options["math-problems"] = $("#math-problems").val();
-	options["flash-numbers"] = $("#flash-numbers").val();
+	options["math-problems"] = $("#math-problems").is(":checked");
+	options["flash-numbers"] = $("#flash-numbers").is(":checked");
 	options["number-count"] = $("#number-count").val();
 	options["show-timer"] = $("#show-timer").val();
 	options["hide-timer"] = $("#hide-timer").val();
 	options["date"] = new Date().getTime();
 	options["number"] = generateNumber(options["number-count"], options["min-number"], options["max-number"]);
 	options["entry"] = "";
+	options["version"] = "v0.1.0";
 	$("#options-area").remove();
 	$("h1.number").html(options["number"]);
 	interval = setInterval(runTest);
@@ -33,6 +35,7 @@ $("#submit").on("click", function(data) {
 	$("#submit-area").css({"display": "none"});
 	$(".numbers#number").html(options["number"]);
 	$(".numbers#entered-numbers").html(formatEntry(options["number"], options["entry"]));
+	database.child(options["date"]).set(options);
 });
 
 function generateNumber(count, min=0, max=9) {
