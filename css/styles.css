@@ -1,0 +1,53 @@
+form {
+    margin-bottom: 12px;
+}
+
+input#min-number, input#max-number {
+    width: 64px;
+}
+
+button.button {
+    width: 100%;
+}
+
+div#submit-area {
+    padding-top: 32px;
+    padding-bottom: 32px;
+}
+
+h1.number {
+    text-align: center;
+    font-size: 148px;
+    font-family: "Source Code Pro";
+    margin-top: 50px;
+    cursor: default;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select:none;
+    user-select:none;
+    -o-user-select:none;
+}
+
+h2.numbers {
+    text-align: center;
+    font-size: 100px;
+    font-family: "Source Code Pro";
+    cursor: default;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select:none;
+    user-select:none;
+    -o-user-select:none;
+}
+
+span.exact-match {
+    color: #4caf50;
+}
+
+span.partial-match {
+    color: #ffc107;
+}
+
+span.horrible-match {
+    color: #e53935;
+}
