@@ -28,17 +28,17 @@
 
 				<div class="input-group mb-2 mr-sm-2 mb-sm-0" data-toggle="tooltip" data-placement="top" title="Enter your age for improved data analysis">
 					<div class="input-group-addon">Age</div>
-					<input type="number" class="form-control" id="age">
+					<input type="number" class="form-control" min="0" max="99" id="age">
 				</div>
 
 				<div class="input-group mb-2 mr-sm-2 mb-sm-0" data-toggle="tooltip" data-placement="top" title="The minimum digit you want to appear">
 					<div class="input-group-addon">Minimum</div>
-					<input type="number" class="form-control" id="min-number" value="0">
+					<input type="number" class="form-control" id="min-number" min="0" max="9" value="0">
 				</div>
 
 				<div class="input-group mb-2 mr-sm-2 mb-sm-0" data-toggle="tooltip" data-placement="top" title="The maximum digit you want to appear">
 					<div class="input-group-addon">Maximum</div>
-					<input type="number" class="form-control" id="max-number" value="9">
+					<input type="number" class="form-control" id="max-number" min="0" max="9" value="9">
 				</div>
 
 				<div class="form-check mb-2 mr-sm-2 mb-sm-0" data-toggle="tooltip" data-placement="top" title="Not yet implemented">
@@ -56,16 +56,16 @@
 			<form class="form-inline">
 				<div class="input-group mb-2 mr-sm-2 mb-sm-0" data-toggle="tooltip" data-placement="top" title="How many numbers appear">
 					<div class="input-group-addon">Number Count</div>
-					<input type="number" class="form-control" id="number-count" value="7">
+					<input type="number" class="form-control" id="number-count" min="1" max="12" value="7">
 				</div>
 				<div class="input-group mb-2 mr-sm-2 mb-sm-0" data-toggle="tooltip" data-placement="top" title="How long you have to view">
 					<div class="input-group-addon">Time Shown</div>
-					<input type="number" class="form-control" id="show-timer" value="5">
+					<input type="number" class="form-control" id="show-timer" min="0" value="5">
 				</div>
 
 				<div class="input-group mb-2 mr-sm-2 mb-sm-0" data-toggle="tooltip" data-placement="top" title="How long you have to wait">
 					<div class="input-group-addon">Time Hidden</div>
-					<input type="number" class="form-control" id="hide-timer" value="30">
+					<input type="number" class="form-control" id="hide-timer" min="0" value="30">
 				</div>
 			</form>
 
