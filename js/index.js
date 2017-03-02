@@ -65,12 +65,14 @@ function generateNumber(count, min=0, max=9) {
 function formatEntry(number, entry) {
 	let format = []
 	for (let i in number) {
-		if (number[i] == entry[i]) {
-			format[i] = `<span class="exact-match">${entry[i]}</span>`;
-		} else if (!number.includes(entry[i])) {
-			format[i] = `<span class="horrible-match">${entry[i]}</span>`;
-		} else {
-			format[i] = `<span class="partial-match">${entry[i]}</span>`;
+		if (i < entry.length) {
+			if (number[i] == entry[i]) {
+				format[i] = `<span class="exact-match">${entry[i]}</span>`;
+			} else if (!number.includes(entry[i])) {
+				format[i] = `<span class="horrible-match">${entry[i]}</span>`;
+			} else {
+				format[i] = `<span class="partial-match">${entry[i]}</span>`;
+			}
 		}
 	}
 	return format.join("");
