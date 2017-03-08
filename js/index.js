@@ -24,6 +24,7 @@ $("#start").on("click", function(data) {
 	options["hide-timer"] = $("#hide-timer").val();
 	options["date"] = new Date().getTime();
 	options["number"] = generateNumber(options["number-count"], options["min-number"], options["max-number"]);
+	options["correctness"] = 0;
 	if (includes(options, "")) {
 		$("#field-alert").stop().fadeIn();
 	} else {
@@ -68,13 +69,18 @@ function formatEntry(number, entry) {
 		if (i < entry.length) {
 			if (number[i] == entry[i]) {
 				format[i] = `<span class="exact-match">${entry[i]}</span>`;
+				options["correctness"] += 1 / options["number-count"];
 			} else if (!number.includes(entry[i])) {
 				format[i] = `<span class="horrible-match">${entry[i]}</span>`;
+				options["correctness"] += 0.5 / options["number-count"];
 			} else {
 				format[i] = `<span class="partial-match">${entry[i]}</span>`;
 			}
 		}
 	}
+	options["correctness"] -= Math.abs(number.length - entry.length) / 7;
+	options["correctness"] = Math.min(Math.max(options["correctness"], 0), 1);
+	options["correctness"] = Math.round(options["correctness"] * 100) + "%";
 	return format.join("");
 }
 
