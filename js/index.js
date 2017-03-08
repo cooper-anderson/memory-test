@@ -15,8 +15,8 @@ $("#field-alert").stop().fadeOut(0);
 $("#start").on("click", function(data) {
 	options["name"] = $("#name").val();
 	options["age"] = $("#age").val();
-	options["min-number"] = $("#min-number").val();
-	options["max-number"] = $("#max-number").val();
+	options["min-number"] = Number($("#min-number").val());
+	options["max-number"] = Number($("#max-number").val());
 	options["math-problems"] = $("#math-problems").is(":checked");
 	options["flash-numbers"] = $("#flash-numbers").is(":checked");
 	options["number-count"] = $("#number-count").val();
