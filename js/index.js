@@ -42,7 +42,7 @@ $("#submit").on("click", function(data) {
 	$("#submit-area").css({"display": "none"});
 	$(".numbers#number").html(options["number"]);
 	$(".numbers#entered-numbers").html(formatEntry(options["number"], options["entry"]));
-	database.child(options["date"]).set(options);
+	database.child("data").child(options["date"]).set(options);
 });
 
 function includes(array, value) {
@@ -57,7 +57,7 @@ function includes(array, value) {
 function generateNumber(count, min=0, max=9) {
 	let number = ""
 	for (let i = 0; i < count; i++) {
-		number += Math.floor((Math.random() + min) * (max - min + 1));
+		number += (Math.floor(Math.random() * (max - min + 1)) + min).toString();
 	}
 	return number;
 }
